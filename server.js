@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
-//TODO isLoggedIn middleware
+const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models');
@@ -31,11 +31,27 @@ app.use(passport.session());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
+  next();
 });
 
-// Controllers go here
-app.use('/', require('./controllers/auth'));
+app.use(function(req, res, next) {
+  console.log(req)
+  next()
+});
 
-let server = app.listen(process.env.PORT || 3001, () => console.log(`🎧 You're listening to the smooth sounds of Port ${process.env.PORT || 3000} 🎧`));
+app.get('/', function(req, res) {
+  // res.json({ message: 'Eat my shorts' });
+  console.log("eat farts fuckface")
+  res.send("fuck you")
+})
+
+app.get('/profile', isLoggedIn, function(req, res) {
+  res.json(req.user);
+})
+
+// Controllers go here
+app.use('/', require('./routes/auth'));
+
+let server = app.listen(process.env.PORT || 3001, () => console.log(`🎧 You're listening to the smooth sounds of Port ${process.env.PORT || 3001} 🎧`));
 
 module.exports = server;
