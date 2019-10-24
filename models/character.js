@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   character.associate = function(models) {
     // associations can be defined here
+    models.character.belongsTo(models.user);
+    models.character.belongsTo(models.characterClass);
+    models.character.hasMany(models.spellbook);
   };
   return character;
 };

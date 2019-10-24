@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   characterclass.associate = function(models) {
     // associations can be defined here
+    models.characterclass.belongsToMany(models.spell, { through: 
+    'spellsCharacterclasses' });
+    models.characterclass.hasMany(models.character);
   };
   return characterclass;
 };
