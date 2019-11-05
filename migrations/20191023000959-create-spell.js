@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       description: {
         allowNull: false,
         type: Sequelize.TEXT
@@ -27,7 +31,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       material: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       ritual: {
         allowNull: false,

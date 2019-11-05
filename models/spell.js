@@ -1,12 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const spell = sequelize.define('spell', {
+    name: DataTypes.STRING,
     description: DataTypes.TEXT,
     higherLevel: DataTypes.TEXT,
     reference: DataTypes.STRING,
     range: DataTypes.STRING,
     components: DataTypes.STRING,
-    material: DataTypes.STRING,
+    material: DataTypes.TEXT,
     ritual: DataTypes.BOOLEAN,
     duration: DataTypes.STRING,
     concentration: DataTypes.BOOLEAN,

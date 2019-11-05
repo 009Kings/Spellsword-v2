@@ -11,7 +11,7 @@ module.exports = {
       spellId: {
         type: Sequelize.INTEGER
       },
-      characterclass: {
+      characterclassId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
